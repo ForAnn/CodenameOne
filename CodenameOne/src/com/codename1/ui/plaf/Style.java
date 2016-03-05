@@ -2169,12 +2169,19 @@ public class Style {
      */
     public void setPaddingUnit(byte... paddingUnit) {
         if(proxyTo != null) {
+            if(paddingUnit != null && paddingUnit.length < 4) {
+                paddingUnit = new byte[]{paddingUnit[0], paddingUnit[0], paddingUnit[0], paddingUnit[0]};
+            }
             for(Style s : proxyTo) {
                 s.setPaddingUnit(paddingUnit);
             }
             return;
         }
-        this.paddingUnit = paddingUnit;
+        if(paddingUnit != null && paddingUnit.length < 4) {
+            this.paddingUnit = new byte[]{paddingUnit[0], paddingUnit[0], paddingUnit[0], paddingUnit[0]};
+        } else {
+            this.paddingUnit = paddingUnit;
+        }
     }
 
     /**
@@ -2193,11 +2200,18 @@ public class Style {
      */
     public void setMarginUnit(byte... marginUnit) {
         if(proxyTo != null) {
+            if(marginUnit != null && marginUnit.length < 4) {
+                marginUnit = new byte[]{marginUnit[0], marginUnit[0], marginUnit[0], marginUnit[0]};
+            }
             for(Style s : proxyTo) {
                 s.setMarginUnit(marginUnit);
             }
             return;
         }
-        this.marginUnit = marginUnit;
+        if(marginUnit != null && marginUnit.length < 4) {
+            this.marginUnit = new byte[]{marginUnit[0], marginUnit[0], marginUnit[0], marginUnit[0]};
+        } else {
+            this.marginUnit = marginUnit;
+        }
     }
 }

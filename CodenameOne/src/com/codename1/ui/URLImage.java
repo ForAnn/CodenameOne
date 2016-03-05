@@ -23,16 +23,18 @@
 
 package com.codename1.ui;
 
-import com.codename1.components.FileEncodedImage;
-import com.codename1.components.StorageImage;
+import com.codename1.io.ConnectionRequest;
 import com.codename1.io.FileSystemStorage;
+import com.codename1.io.NetworkManager;
 import com.codename1.io.Storage;
 import com.codename1.io.Util;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.util.Callback;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 /**
  * <p>{@code URLImage} allows us to create an image from a URL. If the image was downloaded 
@@ -130,7 +132,11 @@ public class URLImage extends EncodedImage {
      * Scales the image to match to fill the area while preserving aspect ratio
      */
     public static final ImageAdapter RESIZE_SCALE_TO_FILL = new ScaleToFill();
-
+    
+    /**
+     * Thread pool used in {@link #createToStorageAsync(java.lang.String, java.lang.String, com.codename1.util.Callback) } and {@link #createToFileSystemAsync(java.lang.String, java.lang.String, com.codename1.util.Callback) }
+     * to download and process images in the background.
+     */
     private final EncodedImage placeholder;
     private final String url;
     private final ImageAdapter adapter;
@@ -150,7 +156,7 @@ public class URLImage extends EncodedImage {
         this.storageFile = storageFile;
         this.fileSystemFile = fileSystemFile;
     }
-
+    
     /**
      * Creates an adapter that uses an image as a Mask, this is roughly the same as SCALE_TO_FILL with the 
      * exception that a mask will be applied later on. This adapter requires that the resulting image be in the size
@@ -387,4 +393,5 @@ public class URLImage extends EncodedImage {
          */
         public boolean isAsyncAdapter();
     }
+    
 }

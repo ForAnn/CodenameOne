@@ -24,10 +24,23 @@
 package com.codename1.util;
 
 /**
- * <p>Simple interface that allows asynchronous code to perform a parameterized callback 
- * or failure in a similar way to GWT's callback interface.</p>
- *
- * @author Shai Almog
+ * Adapter for the {Callback} interface.
+ * @author shannah
  */
-public interface Callback<T> extends SuccessCallback<T>, FailureCallback<T> {
+public class CallbackAdapter<T> implements Callback<T> {
+
+    /**
+     * {@inheritDoc}
+     */
+    public void onSucess(T value) {
+        
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void onError(Object sender, Throwable err, int errorCode, String errorMessage) {
+        
+    }
+    
 }

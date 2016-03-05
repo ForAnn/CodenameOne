@@ -429,6 +429,8 @@ public class Component implements Animation, StyleListener {
         alwaysTensile = laf.isDefaultAlwaysTensile();
         tensileHighlightEnabled = laf.isDefaultTensileHighlight();
         scrollOpacityChangeSpeed = laf.getFadeScrollBarSpeed();
+        isScrollVisible = laf.isScrollVisible();
+        
         if(tensileHighlightEnabled) {
             tensileLength = 3;
         } else {
@@ -911,6 +913,15 @@ public class Component implements Animation, StyleListener {
         allStyles = null;
         if(!sizeRequestedByUser) {
             preferredSize = null;
+        }
+    }
+    
+    /**
+     * This method will remove the Component from its parent.
+     */
+    public void remove(){
+        if(parent != null){
+            parent.removeComponent(this);
         }
     }
 
@@ -4433,8 +4444,8 @@ public class Component implements Animation, StyleListener {
     }
 
     /**
-     * Used to reduce coupling between the TextArea component and display/implementation
-     * classes thus reduce the size of the hello world MIDlet
+     * Used to reduce coupling between the {@link TextArea} component and display/implementation
+     * classes thus reduce the size of the hello world 
      * 
      * @param text text after editing is completed
      */

@@ -322,6 +322,37 @@ public class UIManager {
         themeProps.put("dis#fgColor", disabledColor);
 
         // component specific settings
+        if (installedTheme == null || !installedTheme.containsKey("SignatureButton.derive")) {
+            themeProps.put("SignatureButton.align", centerAlign);
+            themeProps.put("SignatureButton.sel#derive", "SignatureButton");
+            themeProps.put("SignatureButton.press#derive", "SignatureButton");
+            themeProps.put("SignatureButton.dis#derive", "SignatureButton");
+        }
+        
+        if (installedTheme == null || !installedTheme.containsKey("ToastBar.derive")) {
+            themeProps.put("ToastBar.margin", "0,0,0,0");
+            themeProps.put("ToastBar.bgColor", "0");
+            themeProps.put("ToastBar.transparency", "200");
+            themeProps.put("ToastBar.bgType", new Byte(Style.BACKGROUND_NONE));
+            themeProps.put("ToastBar.border", Border.createEmpty());
+            themeProps.put("ToastBar.sel#derive", "ToastBar");
+            themeProps.put("ToastBar.press#derive", "ToastBar");
+            themeProps.put("ToastBar.dis#derive", "ToastBar");
+        }
+        
+        if (installedTheme == null || !installedTheme.containsKey("ToastBarMessage.derive")) {
+            
+            themeProps.put("ToastBarMessage.font", Font.createSystemFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, Font.SIZE_SMALL));
+            themeProps.put("ToastBarMessage.transparency", "0");
+            themeProps.put("ToastBarMessage.fgColor", "FFFFFF");
+            themeProps.put("ToastBarMessage.bgType", new Byte(Style.BACKGROUND_NONE));
+            themeProps.put("ToastBarMessage.border", Border.createEmpty());
+            themeProps.put("ToastBarMessage.sel#derive", "ToastBarMessage");
+            themeProps.put("ToastBarMessage.press#derive", "ToastBarMessage");
+            themeProps.put("ToastBarMessage.dis#derive", "ToastBarMessage");
+        }
+        
+        
         if(installedTheme == null || !installedTheme.containsKey("Button.derive")) {
             themeProps.put("Button.border", Border.getDefaultBorder());
             themeProps.put("Button.padding", "4,4,4,4");
